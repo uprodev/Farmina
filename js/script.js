@@ -17,53 +17,57 @@ jQuery(document).ready(function ($) {
   //select
   $('select').niceSelect();
   //animate number
-  var textPos = $('.content-number').offset().top;
-  $(window).scroll(function() {
 
-    var topOfWindow = $(window).scrollTop();
+  if($('.content-number').length > 0){
+    var textPos = $('.content-number').offset().top;
+    $(window).scroll(function() {
 
-    if($('.content-number').hasClass('stop')){
-      return;
-    }
+      var topOfWindow = $(window).scrollTop();
 
-    if (textPos < topOfWindow + 500) {
-      $('.content-number .item-1 .h6 span').animateNumber({
-        number: 28
-      },1500);
-      $('.content-number .item-2 .h6 span').animateNumber({
-        number: 200
-      },2000);
-      $('.content-number .item-3 .h6 span').animateNumber({
-        number: 1995
-      },2500);
-      $('.content-number .item-4 .h6 span').animateNumber({
-        number: 1.25,
-        numberStep: function(now, tween) {
-          var target = $(tween.elem)
+      if($('.content-number').hasClass('stop')){
+        return;
+      }
 
-          target
+      if (textPos < topOfWindow + 500) {
+        $('.content-number .item-1 .h6 span').animateNumber({
+          number: 28
+        },1500);
+        $('.content-number .item-2 .h6 span').animateNumber({
+          number: 200
+        },2000);
+        $('.content-number .item-3 .h6 span').animateNumber({
+          number: 1995
+        },2500);
+        $('.content-number .item-4 .h6 span').animateNumber({
+          number: 1.25,
+          numberStep: function(now, tween) {
+            var target = $(tween.elem)
 
-            .prop('number', now) // keep current prop value
-            .text(now);
+            target
+
+              .prop('number', now) // keep current prop value
+              .text(now);
             //.text(now).val().substr(0,3);
 
-        },
+          },
 
-      },2000);
+        },2000);
 
-      $('.content-number .item-5 .h6 span').animateNumber({
-        number: 1.5,
-        numberStep: function(now, tween) {
-          var target = $(tween.elem);
+        $('.content-number .item-5 .h6 span').animateNumber({
+          number: 1.5,
+          numberStep: function(now, tween) {
+            var target = $(tween.elem);
 
-          target
-            .prop('number', now) // keep current prop value
-            .text(now);
-        },
-      },3000);
-      $('.content-number').addClass('stop');
-    }
-  });
+            target
+              .prop('number', now) // keep current prop value
+              .text(now);
+          },
+        },3000);
+        $('.content-number').addClass('stop');
+      }
+    });
+  }
+
 
 
 
@@ -167,5 +171,22 @@ jQuery(document).ready(function ($) {
     duration: 800,
     disable: 'mobile', // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
   });
+
+  //cutt text
+  $('.news .item .text').Cuttr({
+    truncate: 'words',
+    length: 9
+  });
+
+  $('.news .item .h6').Cuttr({
+    truncate: 'words',
+    length: 6
+  });
+
+  $('.service-block .item p').Cuttr({
+    truncate: 'words',
+    length: 50
+  });
+
 
 });
