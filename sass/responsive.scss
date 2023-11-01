@@ -141,12 +141,12 @@
   }
   .open-menu{
     display: inline-block;
-    margin:8px 0 0 30px;
+    margin:1px 0 0 30px;
     a{
       display: flex;
       flex-direction: column;
       width: 36px;
-      height: 36px;
+      height: 22px;
       span{
         display: block;
         width: 100%;
@@ -414,6 +414,20 @@
   .block-404 .text{
     padding: 0;
   }
+  .career-info .right ul{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .career .select-line .item input{
+    padding-right: 33px;
+  }
+  .map-block .address .wrap{
+    overflow: auto;
+    padding-right: 10px;
+  }
+  .map-block .address{
+    overflow: hidden;
+  }
 }
 
 @media (max-width:767px) {
@@ -444,6 +458,27 @@
     width: 100%;
   }
   .service-block .top{
+    width: 100%;
+  }
+  .career .select-line .item{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .career .select-line .item:last-child{
+    margin-bottom: 0;
+  }
+  .accordion .title{
+    font-size: 20px;
+  }
+  .map-block .map-content{
+    margin: 0;
+    padding: 0 20px;
+  }
+  .map-block .address{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .map-block .map-wrap{
     width: 100%;
   }
 }
@@ -582,5 +617,23 @@
   .block-404 figure{
     position: relative;
     z-index: 2;
+  }
+  .accordion .accordion-thumb:after {
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+  }
+  .career-info .title{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .career-info .right{
+    width: 100%;
+  }
+  .career-info .title h3, .career-info .title .h3{
+    font-size: 24px;
+  }
+  .career-info .content{
+    padding: 0 5px;
   }
 }

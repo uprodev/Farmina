@@ -188,5 +188,26 @@ jQuery(document).ready(function ($) {
     length: 50
   });
 
+  //accordion
+  $(function() {
+    $(".accordion > .accordion-item.is-active").children(".accordion-panel").slideDown();
+    $(document).on('click', '.accordion > .accordion-item .accordion-thumb', function (e){
+      $(this).parent('.accordion-item').siblings(".accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
+      $(this).parent('.accordion-item').toggleClass("is-active").children(".accordion-panel").slideToggle("ease-out");
+    })
+  });
+
+  //nice scroll
+  if(window.innerWidth > 992){
+    let scrollItem = $(".map-block .address .wrap ").niceScroll({
+      cursorcolor:"#C3D1D8",
+      cursoropacitymin: 1,
+      cursoropacitymax: 1,
+      cursorwidth: "3px",
+      cursorborder: "0px solid #fff",
+    });
+  }
+
+
 
 });
