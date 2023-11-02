@@ -1919,5 +1919,144 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none; }
 
 /*--------------------------END-PAGE-FARMACII---------------------------*/
+/*---------------------------PAGE-SUPPLEMENTS---------------------------*/
+.supplements-header {
+  padding: 145px 0 0;
+  position: relative; }
+  .supplements-header .bg {
+    background: -webkit-gradient(linear, left top, left bottom, from(#E2F5FF), to(rgba(226, 245, 255, 0)));
+    background: linear-gradient(180deg, #E2F5FF 0%, rgba(226, 245, 255, 0) 100%); }
+  .supplements-header .content-width {
+    border-radius: 20px;
+    overflow: hidden;
+    background: url("../img/bg-3.jpg") no-repeat center bottom;
+    background-size: cover;
+    padding-top: 62px;
+    min-height: 592px; }
+    .supplements-header .content-width:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(-6.17%, #8FC0D2), color-stop(107.01%, rgba(217, 217, 217, 0)));
+      background: linear-gradient(180deg, #8FC0D2 -6.17%, rgba(217, 217, 217, 0) 107.01%);
+      z-index: 1; }
+    .supplements-header .content-width .content {
+      position: relative;
+      z-index: 3;
+      width: 590px;
+      max-width: 100%;
+      margin: auto; }
+  .supplements-header h1 {
+    text-align: center;
+    margin: -20px 0 15px; }
+  .supplements-header p {
+    color: #254A73;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; }
+  .supplements-header .breadcrumb {
+    position: relative;
+    z-index: 3; }
+
+.supplements-grey {
+  padding: 100px 0 100px; }
+  .supplements-grey .content-width {
+    border-radius: 20px;
+    background: #F1F3F4; }
+  .supplements-grey .content {
+    padding: 60px 0 60px;
+    width: 705px;
+    margin: auto; }
+  .supplements-grey ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 33px; }
+    .supplements-grey ul li {
+      margin: 0 16px;
+      border-radius: 20px;
+      border: 1px solid  #ED1651;
+      background: #FFF;
+      width: 80px;
+      height: 80px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+  .supplements-grey h2 {
+    text-align: center;
+    margin-bottom: 16px; }
+  .supplements-grey p {
+    color: #254A73;
+    text-align: center;
+    margin-bottom: 25px; }
+  .supplements-grey .btn-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+
+.supplements-items {
+  padding: 100px 0 100px; }
+  .supplements-items .item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 75px; }
+    .supplements-items .item figure {
+      border-radius: 20px;
+      height: 470px;
+      width: 48%;
+      overflow: hidden; }
+      .supplements-items .item figure img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: center;
+           object-position: center; }
+    .supplements-items .item .text {
+      width: 48%; }
+      .supplements-items .item .text h2, .supplements-items .item .text .h2 {
+        margin-bottom: 18px; }
+      .supplements-items .item .text p {
+        margin-bottom: 24px; }
+      .supplements-items .item .text p:last-child {
+        margin-bottom: 0; }
+  .supplements-items .item:nth-child(2n) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse; }
+  .supplements-items .item:last-child {
+    margin-bottom: 0; }
+
+.item-3n .grey {
+  background: #F1F3F4; }
+
+/*--------------------------END-PAGE-SUPPLEMENTS---------------------------*/
 
 /*# sourceMappingURL=styles.css.map */

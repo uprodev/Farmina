@@ -45,7 +45,7 @@
     right: 30px; }
 
   h2, .h2 {
-    font-size: 36px; }
+    font-size: 32px; }
 
   .service .content .item a {
     height: 300px; }
@@ -140,7 +140,10 @@
     width: 400px; }
 
   .service-block .item .text {
-    width: calc(100% - 470px); } }
+    width: calc(100% - 470px); }
+
+  .supplements-header .content-width {
+    min-height: 500px; } }
 @media (max-width: 991px) {
   .content-width {
     width: 720px; }
@@ -493,7 +496,22 @@
     margin-bottom: 30px; }
 
   .map-block .map-wrap {
-    width: 100%; } }
+    width: 100%; }
+
+  .supplements-grey .content {
+    width: 100%; }
+
+  .supplements-items .item {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important; }
+    .supplements-items .item figure {
+      width: 100%;
+      margin-bottom: 30px;
+      height: 400px; }
+    .supplements-items .item .text {
+      width: 100%; } }
 @media (max-width: 575px) {
   .content-width {
     width: 100%;
@@ -513,7 +531,7 @@
     width: 30px; }
 
   .open-menu {
-    margin: 10px 0 0 25px;
+    margin: -3px 0 0 25px;
     position: relative;
     top: 2px; }
 
@@ -651,6 +669,13 @@
     font-size: 24px; }
 
   .career-info .content {
-    padding: 0 5px; } }
+    padding: 0 5px; }
+
+  .supplements-items .item figure {
+    height: 60vw; }
+
+  .supplements-header .content-width, .supplements-grey .content-width {
+    width: calc(100% - 20px);
+    margin-left: 10px; } }
 
 /*# sourceMappingURL=responsive.css.map */
