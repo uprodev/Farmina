@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Farmina</title>
 
-	
+
 	<!-- Main style -->
 	<link rel="stylesheet" href="css/normalize.css"/>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="css/aos.css"/>
 	<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 	<link rel="stylesheet" type="text/css" href="css/responsive.css"/>
-	
+
 </head>
 <body>
 
@@ -135,7 +135,7 @@
 							<div class="map-content">
 								<div class="address">
 									<div class="wrap">
-										<div class="item">
+										<div class="item" data-id="0" id="programs-1">
 											<p class="title">
 												<img src="img/icon-14.svg" alt="">
 												st. Murcha 7/6
@@ -147,7 +147,7 @@
 												<li><div class="img-wrap"><img src="img/icon-15-3.svg" alt=""></div><p>Open: 05.00-20.00</p></li>
 											</ul>
 										</div>
-										<div class="item">
+										<div class="item"data-id="1">
 											<p class="title">
 												<img src="img/icon-14.svg" alt="">
 												st. Murcha 7/6
@@ -237,7 +237,7 @@
 
 
 
-		
+
 	</main>
 
 	<div class="bg-career">
@@ -359,6 +359,10 @@
 		var link ;
 		var latLng;
 		var polypoints;
+    var marker, i;
+    var markers = {};
+    var markersArray = [];
+    var infowindow;
 
 		function initialize() {
 			var locations_programs = [
@@ -368,8 +372,8 @@
 				['Office3', 47.01810446094065, 28.85030025987835, 1, 'img/map.svg', '']
 			];
 
-			var markersArray = [];
-			var markers = {};
+
+
 			var labelIndex = 0;
 			var mapOptions = {
 
@@ -392,14 +396,14 @@
 
 			//***  PROGRAMS
 
-			var marker, i;
+
 			var id = 'programs';
 			var programs = [];
 			var currentMark;
-			var infowindow = new google.maps.InfoWindow();
+			   infowindow = new google.maps.InfoWindow();
 
 			for (i = 0; i < locations_programs.length; i++) {
-				var id = 'programs' + i;
+				var id = 'programs-' + i;
 
 				marker = new google.maps.Marker({
 					position: new google.maps.LatLng(locations_programs[i][1], locations_programs[i][2], locations_programs[i][3]),
@@ -420,6 +424,8 @@
 						infowindow.setContent(programs[i]);
 						infowindow.open(map, marker);
 
+            console.log(marker)
+
 					}
 				})(marker, i));
 
@@ -432,22 +438,7 @@
 				});
 
 
-				programs[0] = '<div id="content">' +
-					'<h1 id="firstHeading" class="firstHeading">Pharmacy Farmina</h1>' +
-					'<div id="bodyContent">' +
-					'<figure class="map-img"><img src="img/img-10.jpg" alt=""></figure>' +
-					'<p class="title text">st. Murcha 7/6</p>' +
-					'<p class="tel text"><a href="tel:+078999246">078-999-246</a></p>' +
-					'<p class="time text"><span>Monday</span> <span>05.00-20.00</span></p>' +
-					'<p class="text"><span>Tuesday</span> <span>05.00-20.00</span></p>' +
-					'<p class="text"><span>Wednesday</span> <span>05.00-20.00</span></p>' +
-					'<p class="text"><span>Thursday</span> <span>05.00-20.00</span></p>' +
-					'<p class="text"><span>Friday</span> <span>05.00-20.00</span></p>' +
-					'<p class="text"><span>Saturday</span> <span>05.00-20.00</span></p>' +
-					'<p class="text"><span>Sunday</span> <span>05.00-20.00</span></p>' +
 
-					'</div>' +
-					'</div>';
 
 				programs[0] = '<div id="content">' +
 					'<h1 id="firstHeading" class="firstHeading">Pharmacy Farmina</h1>' +
@@ -482,8 +473,41 @@
 
 					'</div>' +
 					'</div>';
+
+				programs[0] = '<div id="content">' +
+					'<h1 id="firstHeading" class="firstHeading">Pharmacy Farmina</h1>' +
+					'<div id="bodyContent">' +
+					'<figure class="map-img"><img src="img/img-10.jpg" alt=""></figure>' +
+					'<p class="title text">st. Murcha 7/6</p>' +
+					'<p class="tel text"><a href="tel:+078999246">078-999-246</a></p>' +
+					'<p class="time text"><span>Monday</span> <span>05.00-20.00</span></p>' +
+					'<p class="text"><span>Tuesday</span> <span>05.00-20.00</span></p>' +
+					'<p class="text"><span>Wednesday</span> <span>05.00-20.00</span></p>' +
+					'<p class="text"><span>Thursday</span> <span>05.00-20.00</span></p>' +
+					'<p class="text"><span>Friday</span> <span>05.00-20.00</span></p>' +
+					'<p class="text"><span>Saturday</span> <span>05.00-20.00</span></p>' +
+					'<p class="text"><span>Sunday</span> <span>05.00-20.00</span></p>' +
+
+					'</div>' +
+					'</div>';
+
+        markersArray.push(marker);
 			}
+
+
 		}
+
+    var el = document.getElementsByClassName('item')
+    for (var i=0;i<el.length; i++) {
+
+
+      el[i].addEventListener("click", function () {
+        var id = this.dataset.id
+        infowindow.close();
+        google.maps.event.trigger(markersArray[id], 'click');
+
+      });
+    }
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
 
