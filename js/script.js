@@ -209,5 +209,9 @@ jQuery(document).ready(function ($) {
   }
 
 
-
+  $('input:file').change(function(){
+    $this = $(this);
+    $name = $this.val().replace('C:\\fakepath\\', '');
+    $('#file').text($name).show();
+  });
 });
