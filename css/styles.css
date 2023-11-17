@@ -2126,6 +2126,9 @@ input[type="search"]::-webkit-search-results-decoration {
     .default-form .input-wrap-file .wrap label .text:last-child {
       margin-bottom: 0; }
 
+.map-block .map-content .item.is-active {
+  background: #F5FCFF; }
+
 /*--------------------------END-PAGE-SUPPLEMENTS---------------------------*/
 
 /*# sourceMappingURL=styles.css.map */
