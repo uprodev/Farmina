@@ -365,6 +365,7 @@
   <script src="js/script.js"></script>
 
   <script>
+    $ = jQuery;
 		// code to draw map
 		var map;
 		var col = '#FF0000';
@@ -438,6 +439,9 @@
 
             console.log(marker)
 
+            $('.item').removeClass("is-active");
+            $('[data-id="'+ i +'"]').addClass("is-active");
+
 					}
 				})(marker, i));
 
@@ -509,7 +513,7 @@
 
 		}
 
-    $ = jQuery;
+
 
 
       $('.item').click(function(){
@@ -521,7 +525,7 @@
       })
 
 
- 
+
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
 
