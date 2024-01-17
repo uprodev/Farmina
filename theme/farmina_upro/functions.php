@@ -29,10 +29,12 @@ function load_style_script(){
 	wp_enqueue_script('my-script', get_template_directory_uri() . '/js/script.js', array(), false, true);
 	wp_enqueue_script('my-add', get_template_directory_uri() . '/js/add.js', array(), false, true);
 
-	if(is_search()){
+	/*if(is_search()){*/
 		$pharmacy_args = array(
 			'post_type' => 'pharmacy', 
 			'posts_per_page' => -1, 
+			'post_status' => 'publish',
+			'suppress_filters' => false,
 		);
 
 		if (isset($_GET)) {
@@ -56,7 +58,7 @@ function load_style_script(){
 				);
 		}
 
-	} else $pharmacy_args = array('post_type' => 'pharmacy', 'posts_per_page' => -1);
+	/*} else $pharmacy_args = array('post_type' => 'pharmacy', 'posts_per_page' => -1);*/
 
 	$pharmacies = get_posts($pharmacy_args);
 	$pharmacies_arr_for_js = [];
@@ -64,12 +66,12 @@ function load_style_script(){
 	foreach ($pharmacies as $item) {
 		$pharmacies_arr_for_js[] = [
 			'address' => get_the_title($item->ID),
-			'title' => get_field('name', $item->ID),
+			'title' => get_field('field_6560a6b6b9b32', $item->ID),
 			'image' => get_the_post_thumbnail_url($item->ID, $size = 'full'),
-			'phone' => get_field('phone', $item->ID),
-			'phone_regex' => preg_replace('/[^0-9]/', '', get_field('phone', $item->ID)),
-			'schedule' => get_field('schedule', $item->ID),
-			'map' => get_field('map', $item->ID),
+			'phone' => get_field('field_656071a48e603', $item->ID),
+			'phone_regex' => preg_replace('/[^0-9]/', '', get_field('field_656071a48e603', $item->ID)),
+			'schedule' => get_field('field_656072038e604', $item->ID),
+			'map' => get_field('field_656085dde7415', $item->ID),
 		];
 	}
 
@@ -79,7 +81,7 @@ function load_style_script(){
 	$my_add = array(
 		'pharmacies_arr_for_js' => $pharmacies_arr_for_js,
 	);
-	wp_localize_script('my-script', 'php_vars', $my_script);
+	wp_localize_script('my-script', 'php_vars_script', $my_script);
 	wp_localize_script('my-add', 'php_vars', $my_add);
 
 }

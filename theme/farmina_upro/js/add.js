@@ -76,7 +76,7 @@ jQuery(document).ready(function($) {
 					try {
 						var result = JSON.parse(data);
 						$("#response_pharmacies").html(result[0]);
-						load_map(result[1]);
+						load_map(result[1], (result[2] || result[3] ? 14 : 7));
 					} catch (e) {
 						$("#response_pharmacies").html(data);
 					}
@@ -92,10 +92,11 @@ jQuery(document).ready(function($) {
 
 
 var pharmacies_ = php_vars.pharmacies_arr_for_js;
-function load_map(pharmacies){
+function load_map(pharmacies, zoom){
 	if (document.getElementById('map')) {
 		//if(pharmacies.length != 5) debugger
 		document.getElementById('map').innerHTML = '';
+		$ = jQuery;
 	// code to draw map
 		var map;
 		var col = '#FF0000';
@@ -111,15 +112,16 @@ function load_map(pharmacies){
 			var locations_programs = [];
 
 			for (var i = 0; i < pharmacies.length; i++) {
-				locations_programs.push(['Office' + i, pharmacies[i].map.lat, pharmacies[i].map.lng, 1, '/wp-content/themes/farmina_upro/img/map.svg', ''])
+				locations_programs.push(['Office' + i, (pharmacies[i].map.lat ? pharmacies[i].map.lat : ''), (pharmacies[i].map.lng ? pharmacies[i].map.lng : ''), 1, '/wp-content/themes/farmina_upro/img/map.svg', '']);
 			}
 
 
 			var labelIndex = 0;
+
 			var mapOptions = {
 
-				center: new google.maps.LatLng(pharmacies[0].map.lat, pharmacies[0].map.lng),
-				zoom: 14,
+				center: new google.maps.LatLng((pharmacies[0].map.lat ? pharmacies[0].map.lat : ''), (pharmacies[0].map.lng ? pharmacies[0].map.lng : '')),
+				zoom: zoom,
 
 				scaleControl: true,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -145,18 +147,18 @@ function load_map(pharmacies){
 
 			for (var i = 0; i < pharmacies.length; i++) {
 				programs.push('<div id="content">' +
-					'<h1 id="firstHeading" class="firstHeading">' + pharmacies[i].title + '</h1>' +
+					'<h1 id="firstHeading" class="firstHeading">' + (pharmacies[i].title ? pharmacies[i].title : '') + '</h1>' +
 					'<div id="bodyContent">' +
-					'<figure class="map-img"><img src="' + pharmacies[i].image + '" alt=""></figure>' +
-					'<p class="title text">' + pharmacies[i].address + '</p>' +
-					'<p class="tel text"><a href="tel:+' + pharmacies[i].phone_regex + '">' + pharmacies[i].phone + '</a></p>' +
-					'<p class="time text"><span>Monday</span> <span>' + pharmacies[i].schedule.day_1.start + '-' + pharmacies[i].schedule.day_1.end + '</span></p>' +
-					'<p class="text"><span>Tuesday</span> <span>' + pharmacies[i].schedule.day_2.start + '-' + pharmacies[i].schedule.day_2.end + '</span></p>' +
-					'<p class="text"><span>Wednesday</span> <span>' + pharmacies[i].schedule.day_3.start + '-' + pharmacies[i].schedule.day_3.end + '</span></p>' +
-					'<p class="text"><span>Thursday</span> <span>' + pharmacies[i].schedule.day_4.start + '-' + pharmacies[i].schedule.day_4.end + '</span></p>' +
-					'<p class="text"><span>Friday</span> <span>' + pharmacies[i].schedule.day_5.start + '-' + pharmacies[i].schedule.day_5.end + '</span></p>' +
-					'<p class="text"><span>Saturday</span> <span>' + pharmacies[i].schedule.day_6.start + '-' + pharmacies[i].schedule.day_6.end + '</span></p>' +
-					'<p class="text"><span>Sunday</span> <span>' + pharmacies[i].schedule.day_0.start + '-' + pharmacies[i].schedule.day_0.end + '</span></p>' +
+					'<figure class="map-img"><img src="' + (pharmacies[i].image ? pharmacies[i].image : '') + '" alt=""></figure>' +
+					'<p class="title text">' + (pharmacies[i].address ? pharmacies[i].address : '') + '</p>' +
+					'<p class="tel text"><a href="tel:+' + (pharmacies[i].phone ? pharmacies[i].phone_regex : '') + '">' + (pharmacies[i].phone ? pharmacies[i].phone : '') + '</a></p>' +
+					'<p class="time text"><span>Monday</span> <span>' + (pharmacies[i].schedule.day_1.start ? pharmacies[i].schedule.day_1.start : '') + '-' + (pharmacies[i].schedule.day_1.end ? pharmacies[i].schedule.day_1.end : '') + '</span></p>' +
+					'<p class="text"><span>Tuesday</span> <span>' + (pharmacies[i].schedule.day_2.start ? pharmacies[i].schedule.day_2.start : '') + '-' + (pharmacies[i].schedule.day_2.end ? pharmacies[i].schedule.day_2.end : '') + '</span></p>' +
+					'<p class="text"><span>Wednesday</span> <span>' + (pharmacies[i].schedule.day_3.start ? pharmacies[i].schedule.day_3.start : '') + '-' + (pharmacies[i].schedule.day_3.end ? pharmacies[i].schedule.day_3.end : '') + '</span></p>' +
+					'<p class="text"><span>Thursday</span> <span>' + (pharmacies[i].schedule.day_4.start ? pharmacies[i].schedule.day_4.start : '') + '-' + (pharmacies[i].schedule.day_4.end ? pharmacies[i].schedule.day_4.end : '') + '</span></p>' +
+					'<p class="text"><span>Friday</span> <span>' + (pharmacies[i].schedule.day_5.start ? pharmacies[i].schedule.day_5.start : '') + '-' + (pharmacies[i].schedule.day_5.end ? pharmacies[i].schedule.day_5.end : '') + '</span></p>' +
+					'<p class="text"><span>Saturday</span> <span>' + (pharmacies[i].schedule.day_6.start ? pharmacies[i].schedule.day_6.start : '') + '-' + (pharmacies[i].schedule.day_6.end ? pharmacies[i].schedule.day_6.end : '') + '</span></p>' +
+					'<p class="text"><span>Sunday</span> <span>' + (pharmacies[i].schedule.day_0.start ? pharmacies[i].schedule.day_0.start : '') + '-' + (pharmacies[i].schedule.day_0.end ? pharmacies[i].schedule.day_0.end : '') + '</span></p>' +
 					'</div>' +
 					'</div>');
 			}
@@ -206,6 +208,14 @@ function load_map(pharmacies){
 
 		initialize();
 		/*google.maps.event.addDomListener(window, 'load', initialize);*/
+
+		$('.item').click(function(){
+			var id = $(this).attr('data-id');
+			infowindow.close();
+			google.maps.event.trigger(markersArray[id], 'click');
+			$('.item').removeClass("is-active");
+			$(this).addClass("is-active");
+		})
 	}
 }
-load_map(pharmacies_);
+load_map(pharmacies_, 7);

@@ -30,16 +30,16 @@ jQuery(document).ready(function ($) {
 
       if (textPos < topOfWindow + 500) {
         $('.content-number .item-1 .h6 span').animateNumber({
-          number: php_vars.counter_values[0].number
+          number: php_vars_script.counter_values[0].number
         },1500);
         $('.content-number .item-2 .h6 span').animateNumber({
-          number: php_vars.counter_values[1].number
+          number: php_vars_script.counter_values[1].number
         },2000);
         $('.content-number .item-3 .h6 span').animateNumber({
-          number: php_vars.counter_values[2].number
+          number: php_vars_script.counter_values[2].number
         },2500);
         $('.content-number .item-4 .h6 span').animateNumber({
-          number: php_vars.counter_values[3].number,
+          number: php_vars_script.counter_values[3].number,
           numberStep: function(now, tween) {
             var target = $(tween.elem)
 
@@ -54,7 +54,7 @@ jQuery(document).ready(function ($) {
         },2000);
 
         $('.content-number .item-5 .h6 span').animateNumber({
-          number: php_vars.counter_values[4].number,
+          number: php_vars_script.counter_values[4].number,
           numberStep: function(now, tween) {
             var target = $(tween.elem);
 

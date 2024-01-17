@@ -60,6 +60,8 @@ function filter_pharmacies(){
 	$args = array(
 		'post_type' => 'pharmacy',
 		'posts_per_page' => -1,
+		'post_status' => 'publish',
+		'suppress_filters' => false,
 	);
 
 	if (isset($_POST)) {
@@ -108,7 +110,7 @@ function filter_pharmacies(){
 		endwhile;
 		wp_reset_postdata();
 
-		$data = [ob_get_clean(), $pharmacies_arr_for_js];
+		$data = [ob_get_clean(), $pharmacies_arr_for_js, $pharmacy_city, $pharmacy_time];
 		echo json_encode($data);
 	else :
 		_e('Sorry, nothing found', 'Farmina');
